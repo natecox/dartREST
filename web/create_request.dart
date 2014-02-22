@@ -1,9 +1,8 @@
-import 'dart:html';
-import 'dart:convert' show JSON;
+part of dartrest;
 
-void create_request() {
+void create_request(Event e) {
     InputElement url_input = querySelector('#url');
-    InputElement method_input = querySelector('#method');
+    SelectElement method_input = querySelector('#method');
     ElementList data_elements = querySelectorAll('.data');
     
     Map data_map = new Map();
@@ -16,4 +15,8 @@ void create_request() {
     }
     
     String data_JSON = JSON.encode(data_map);
+    
+    print("URL: " + url_input.value + "\nMEHTOD: " + method_input.value + "\nDATA: " + data_JSON);
+    
+    e.preventDefault();
 }
