@@ -20,3 +20,19 @@ void create_request(Event e) {
     
     e.preventDefault();
 }
+
+void add_data_element(MouseEvent e) {
+    Element parent = querySelector('#form_div');
+    
+    DivElement data_div = new DivElement();
+    data_div.classes.add('data');
+    TextInputElement name_input = new TextInputElement();
+    name_input.classes.add('name');
+    TextInputElement value_input = new TextInputElement();
+    value_input.classes.add('value');
+    
+    data_div..append(name_input)
+            ..append(value_input);
+    
+    parent.append(data_div);
+}
