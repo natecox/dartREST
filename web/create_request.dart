@@ -14,9 +14,8 @@ void create_request(Event e) {
         }
     }
     
-    String data_JSON = JSON.encode(data_map);
-    
-    print("URL: " + url_input.value + "\nMEHTOD: " + method_input.value + "\nDATA: " + data_JSON);
+    RESTRequest r = new RESTRequest();
+    print(r.getMap(url_input.value, method_input.value, data_map));
     
     e.preventDefault();
 }
