@@ -9,8 +9,10 @@ part 'create_request.dart';
 void  main() {
 
     document.querySelector('.request-form').onSubmit.listen(create_request);
-    document.querySelectorAll('.method-selector').forEach((element) => element.onClick((event) {
+    document.querySelectorAll('.method-selector').forEach((element) => element.onClick.listen((event) {
         (document.querySelector('.method') as InputElement).value = event.target.text;
+        document.querySelector('.dropdown-toggle').innerHtml = event.target.text + ' <span class="caret">';
+        
     }));
     //RESTRequest r = new RESTRequest();
     //Map map = new Map();
