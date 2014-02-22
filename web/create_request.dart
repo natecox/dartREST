@@ -1,8 +1,8 @@
 part of dartrest;
 
 void create_request(Event e) {
-    InputElement url_input = querySelector('#url');
-    SelectElement method_input = querySelector('#method');
+    InputElement url_input = querySelector('.url');
+    SelectElement method_input = querySelector('.method');
     ElementList data_elements = querySelectorAll('.data');
     
     Map data_map = new Map();
@@ -14,14 +14,13 @@ void create_request(Event e) {
         }
     }
     
-    RESTRequest r = new RESTRequest();
-    print(r.getMap(url_input.value, method_input.value, data_map));
-    
+    Response serverResponse = new Response();
+    print(serverResponse.getRequest(url_input.value, method_input.value, data_map));
     e.preventDefault();
 }
 
 void add_data_element(MouseEvent e) {
-    Element parent = querySelector('#form_div');
+    Element parent = querySelector('.parameter-container');
     
     DivElement data_div = new DivElement();
     data_div.classes.add('data');
@@ -30,8 +29,9 @@ void add_data_element(MouseEvent e) {
     TextInputElement value_input = new TextInputElement();
     value_input.classes.add('value');
     
-    data_div..append(name_input)
-            ..append(value_input);
+    data_div
+        ..append(name_input)
+        ..append(value_input);
     
     parent.append(data_div);
 }
