@@ -25,7 +25,7 @@ void add_data_element(MouseEvent e) {
     Element data_item = new Element.li();
     data_item.classes.add('data');
     
-    data_item.innerHtml = '<input type="text" class="form-control parameter-entry" placeholder="Enter a key here!">\n<input type="text" class="form-control parameter-entry" placeholder="Enter a value here!">';
+    data_item.innerHtml = '<input type="text" class="form-control parameter-entry name" placeholder="Enter a key here!">\n<input type="text" class="form-control parameter-entry value" placeholder="Enter a value here!">';
     
     parent.append(data_item);
 }
