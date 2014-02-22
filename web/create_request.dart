@@ -22,16 +22,10 @@ void create_request(Event e) {
 void add_data_element(MouseEvent e) {
     Element parent = querySelector('.parameter-container');
     
-    DivElement data_div = new DivElement();
-    data_div.classes.add('data');
-    TextInputElement name_input = new TextInputElement();
-    name_input.classes.add('name');
-    TextInputElement value_input = new TextInputElement();
-    value_input.classes.add('value');
+    ListElement data_item = new ListElement();
+    data_item.classes.add('data');
     
-    data_div
-        ..append(name_input)
-        ..append(value_input);
+    data_item.innerHtml = '<input type="text" class="form-control parameter-entry" placeholder="Enter a key here!">\n<input type="text" class="form-control parameter-entry" placeholder="Enter a value here!">';
     
     parent.append(data_div);
 }

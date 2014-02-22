@@ -15,6 +15,7 @@ void  main() {
         document.querySelector('.dropdown-toggle').innerHtml = event.target.text + ' <span class="caret">';
         
     }));
+    document.querySelector('.parameter-title').onClick.listen(add_data_element);
     //RESTRequest r = new RESTRequest();
     //Map map = new Map();
     //map['test'] = 'response';
