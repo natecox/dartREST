@@ -1,8 +1,9 @@
 part of dartrest;
 
 void create_request(Event e) {
+    e.preventDefault();
     InputElement url_input = querySelector('.url');
-    SelectElement method_input = querySelector('.method');
+    InputElement method_input = querySelector('.method');
     ElementList data_elements = querySelectorAll('.data');
     
     Map data_map = new Map();
@@ -16,7 +17,7 @@ void create_request(Event e) {
     
     Response serverResponse = new Response();
     print(serverResponse.getRequest(url_input.value, method_input.value, data_map));
-    e.preventDefault();
+    serverResponse.render();
 }
 
 void add_data_element(MouseEvent e) {

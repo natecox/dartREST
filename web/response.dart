@@ -13,15 +13,19 @@ class Response {
 
     void render() {
         var output = document.querySelector('.response.output');
-        List<DivElement> outputElements = new Map();
-        for(var key in data.getKeys()){
-            String value = data[key];
-            DivElement kvpContainerDiv, keyDiv, valueDiv = new DivElement();
-            keyDiv..classes.add('key')
-                ..text = key;
+        List<DivElement> outputElements = new List();
+        for(var key in data.keys){
+            String value = data;
+            DivElement kvpContainerDiv = new DivElement(); 
+            DivElement keyDiv = new DivElement();
+            DivElement valueDiv = new DivElement();
+            keyDiv
+                ..classes.add('key')
+                ..text = 'Response: ';
             valueDiv..classes.add('value')
                 ..text = value;
-            kvpContainerDiv..append(keyDiv)
+            kvpContainerDiv
+                ..append(keyDiv)
                 ..append(valueDiv)
                 ..classes.add('kvp-container');
             output.append(kvpContainerDiv);
@@ -40,6 +44,7 @@ class Response {
             ..open(methodOut, url, async: false)
             ..send(JSON.encode(dataOut));
 
-        return JSON.decode(request.responseText);
+        data = JSON.decode(request.responseText);
+        return data;
     }
 }
