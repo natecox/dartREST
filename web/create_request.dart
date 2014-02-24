@@ -29,4 +29,5 @@ void add_data_element(MouseEvent e) {
     data_item.innerHtml = '<input type="text" class="form-control parameter-entry name" placeholder="Enter a key here!">\n<input type="text" class="form-control parameter-entry value" placeholder="Enter a value here!">';
     
     parent.append(data_item);
+    e.preventDefault();
 }

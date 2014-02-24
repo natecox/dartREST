@@ -12,8 +12,29 @@ class Response {
     }
 
     void render() {
-        TextAreaElement output = document.querySelector('.area') as TextAreaElement;
-        output.text = data.toString();
+        Element output = document.querySelector('.output');
+        output.innerHtml = "";
+        output.append(to_lis(data));
+    }
+    
+    Element to_lis(Map data) {
+        Element master_list = new Element.ul();
+        for (String key in data.keys) {
+            var value = data[key];
+            Element element;
+            if (value is Map) {
+                element = to_lis(value);
+            }
+            else {
+                element = new Element.ul();
+                element.innerHtml = "<li>" + value.toString() + "</li>";
+            }
+            Element sub_list = new Element.li();
+            sub_list.innerHtml = key;
+            sub_list.append(element);
+            master_list.append(sub_list);
+        }
+        return master_list;
     }
 
     Map getRequest(String url, String methodOut, Map dataOut) {
@@ -28,6 +49,7 @@ class Response {
             ..open(methodOut, url, async: false)
             ..send(JSON.encode(dataOut));
 
+        data = JSON.decode(request.responseText);
         return JSON.decode(request.responseText);
     }
 }
